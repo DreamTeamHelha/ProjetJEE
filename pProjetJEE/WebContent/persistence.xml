@@ -9,7 +9,7 @@
 		<persistence-unit name="dbg13" transaction-type="JTA">
 	<!-- RESOURCE_LOCAL permet de gérer manuellement les transactions
 	//JTA permet de gérer automatiquement les transactions -->
-		<jta-data-source>jdbc/HierarchieAbstraiteC</jta-data-source>
+		<jta-data-source>jdbc/g13</jta-data-source>
 		<class>com.helha.entities.Category</class>
 		<class>com.helha.entities.File</class>
 		<class>com.helha.entities.Image</class>
@@ -18,9 +18,17 @@
 		<class>com.helha.entities.Production</class>
 		<class>com.helha.entities.Video</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		
 		<properties>
 			
-			
+		    <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBSirtoliRacing"/> -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby://193.190.66.14:1527/dbg13"/>
+			<property name="eclipselink.ddl-generation" value="create-tables"/>
+			<property name="javax.persistence.jdbc.user" value="APP"/>
+			<property name="javax.persistence.jdbc.password" value="APP"/>
+			<property name="eclipselink.ddl-generation.output-mode" value="database"/>
+					
 		</properties>
 	</persistence-unit>
 	
