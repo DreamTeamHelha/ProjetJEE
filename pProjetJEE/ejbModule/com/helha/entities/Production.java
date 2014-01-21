@@ -56,6 +56,32 @@ public class Production {
 		return id;
 	}
 	
+	public void addMedia(Media m)
+	{
+	mediaList.add(m);
+	}
+	public void removeMedia(int id)
+	{
+		for(Media m :mediaList)
+		{
+			if(m.getId()==id)
+			{
+				mediaList.remove(m);
+			}
+		}
+		
+	}
+	public Media searchMedia(int id)
+	{
+		for(Media m :mediaList)
+		{
+			if(m.getId()==id)
+			{
+				return m;
+			}
+		}
+		return null;
+	}
 	
 
 }
