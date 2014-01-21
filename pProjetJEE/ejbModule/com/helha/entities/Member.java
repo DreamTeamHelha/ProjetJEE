@@ -143,6 +143,31 @@ public class Member implements Serializable {
 		return false;
 	}
 	
+	public Production researchWork(String workName)
+	{
+		for(Production p : workList)
+		{
+			if(p.getName().equals(workName))
+			{
+				return p;
+			}
+		}
+		return null;
+	}
+	
+	public void modifyWork(Production p)
+	{
+		for(Production prod : workList)
+		{
+			if(p.getId()== prod.getId())
+			{
+				int index = workList.indexOf(prod);
+				workList.remove(prod);
+				workList.add(index, p);
+			}
+		}
+	}
+	
 	
 	
 }
