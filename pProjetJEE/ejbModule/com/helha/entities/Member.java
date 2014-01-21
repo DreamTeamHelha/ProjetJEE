@@ -30,6 +30,8 @@ public class Member implements Serializable {
 	private int finishYear;
 	private String personnalDescription;
 	
+	private boolean isAdmin;
+	
 	@JoinColumn(nullable=false)
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Category category;
@@ -126,6 +128,14 @@ public class Member implements Serializable {
 		return id;
 	}
 	
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
 	public void addWork(Production p)
 	{
 		workList.add(p);
