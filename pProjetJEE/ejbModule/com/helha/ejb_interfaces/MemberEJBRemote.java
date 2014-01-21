@@ -7,12 +7,12 @@ import javax.ejb.Remote;
 import com.helha.entities.Member;
 
 @Remote
-public interface AdministrationEJBRemote {
-
+public interface MemberEJBRemote 
+{
 	public void addMember(Member m);
-	public void remove(Member m);
-	public List<Member> showAllMember();
-	public Member showOneMember();
+	public void removeMember(Member m);
 	public void updateMember(Member m);
+	public List<Member> getMembers();
+	
 	
 }
