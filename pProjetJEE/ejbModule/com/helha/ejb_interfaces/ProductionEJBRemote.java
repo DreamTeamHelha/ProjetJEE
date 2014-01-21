@@ -7,7 +7,7 @@ import javax.ejb.Remote;
 import com.helha.entities.Production;
 
 @Remote
-public interface PublicationEJBRemote {
+public interface ProductionEJBRemote {
 
 	public void addPublication(Production p);
 	public void removeProduction(Production p);
