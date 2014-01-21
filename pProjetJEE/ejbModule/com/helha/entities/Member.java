@@ -29,7 +29,16 @@ public class Member implements Serializable {
 	private String firstname;
 	private int finishYear;
 	private String personnalDescription;
+	private String mail;
 	
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
 	private boolean isAdmin;
 	
 	@JoinColumn(nullable=false)

@@ -13,6 +13,7 @@ public interface MemberEJBRemote
 	public void removeMember(Member m);
 	public void updateMember(Member m);
 	public List<Member> getMembers();
+	public List<Member> getMembers(String category);
 	
 	
 }

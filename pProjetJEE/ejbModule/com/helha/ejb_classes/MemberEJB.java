@@ -37,4 +37,11 @@ public class MemberEJB implements MemberEJBRemote {
 		return em.createQuery("SELECT m FROM Member m").getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Member> getMembers(String category) {
+		String request = "SELECT m FROM Member m, Category c WHERE c.NAME ='"+category+"' AND c.ID = m.CATEGORY_id";
+		return em.createQuery(request).getResultList();
+	}
+
 }
