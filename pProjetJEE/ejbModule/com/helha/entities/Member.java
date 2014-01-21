@@ -3,12 +3,16 @@ package com.helha.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
-import com.sun.xml.rpc.processor.modeler.j2ee.xml.genericBooleanType;
+
 
 
 @Entity
@@ -25,8 +29,13 @@ public class Member implements Serializable {
 	private String firstname;
 	private int finishYear;
 	private String personnalDescription;
+	
+	@JoinColumn(nullable=false)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Category category;
 	
+	@JoinColumn(nullable=true)
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private ArrayList<Production> workList;
 
 	public Member(String username, String password, String name,
@@ -115,6 +124,23 @@ public class Member implements Serializable {
 
 	public int getId() {
 		return id;
+	}
+	
+	public void addWork(Production p)
+	{
+		workList.add(p);
+	}
+	public boolean removeWork(int workId)
+	{
+		for(Production p : workList)
+		{
+			if(p.getId() == workId)
+			{
+				workList.remove(p);
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	
