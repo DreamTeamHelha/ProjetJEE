@@ -40,5 +40,11 @@ public class CategoryEJB implements CategoryEJBRemote {
 		
 	}
 
+	@Override
+	public Category getCategory(int id) {
+		String request = "Select c from Category c where c.id ="+id;
+		return (Category)em.createQuery(request).getSingleResult();
+	}
+
 	
 }

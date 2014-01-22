@@ -16,5 +16,6 @@ public interface CategoryEJBRemote
 	public List<Category> getCategories();
 	public void removeCategory(Category c);
 	public void updateCategory(Category c);
+	public Category getCategory(int id);
 
 }

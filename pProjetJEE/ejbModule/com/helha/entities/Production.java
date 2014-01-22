@@ -1,6 +1,7 @@
 package com.helha.entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -19,9 +20,8 @@ public class Production {
 	private String name;
 	private String description;
 	
-	@JoinColumn(nullable=true)
 	@OneToMany(cascade=CascadeType.PERSIST)
-	private ArrayList<Media> mediaList;
+	private List<Media> mediaList;
 	
 	
 	public Production() {
@@ -46,10 +46,10 @@ public class Production {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public ArrayList<Media> getMediaList() {
+	public List<Media> getMediaList() {
 		return mediaList;
 	}
-	public void setMediaList(ArrayList<Media> mediaList) {
+	public void setMediaList(List<Media> mediaList) {
 		this.mediaList = mediaList;
 	}
 	public int getId() {

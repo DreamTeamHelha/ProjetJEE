@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="master.xhtml">
+
+<ui:define name="Title">Gestion des sections</ui:define>
+
+<ui:define name="Content">
+	<h:form>
+		<h:outputText value="Nombre de sections : #{userMBean.getAllCategories().size()}"></h:outputText><br/>
+		Ajouter une section : <h:inputText id="categoryName" value="#{adminMBean.category.name}" required="true" requiredMessage="*"/>
+		<h:commandButton value="Ajouter" action="#{adminMBean.addCategory()}"/>
+		<h:message for="categoryName" style="color:red"></h:message>
+		<hr/>
+		
+		<c:forEach items="#{userMBean.getAllCategories()}" var="category">
+			<h:outputText value="${category.name}"/><br/>
+		</c:forEach>
+	</h:form>
+</ui:define>
+
+</ui:composition>
+
+</html>

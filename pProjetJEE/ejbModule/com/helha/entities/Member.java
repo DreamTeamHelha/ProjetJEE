@@ -2,6 +2,7 @@ package com.helha.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -45,9 +46,8 @@ public class Member implements Serializable {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Category category;
 	
-	@JoinColumn(nullable=true)
 	@OneToMany(cascade = CascadeType.PERSIST)
-	private ArrayList<Production> workList;
+	private List<Production> workList;
 
 	public Member(String username, String password, String name,
 			String firstname, int finishYear, String personnalDescription,
@@ -66,6 +66,7 @@ public class Member implements Serializable {
 
 	public Member() {
 		super();
+		this.category= new Category();
 		workList = new ArrayList<Production>();
 	}
 
@@ -125,11 +126,11 @@ public class Member implements Serializable {
 		this.category = category;
 	}
 
-	public ArrayList<Production> getWorkList() {
+	public List<Production> getWorkList() {
 		return workList;
 	}
 
-	public void setWorkList(ArrayList<Production> workList) {
+	public void setWorkList(List<Production> workList) {
 		this.workList = workList;
 	}
 

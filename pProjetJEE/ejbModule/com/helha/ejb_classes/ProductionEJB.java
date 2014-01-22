@@ -2,12 +2,14 @@ package com.helha.ejb_classes;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.helha.ejb_interfaces.ProductionEJBRemote;
 import com.helha.entities.Production;
 
+@Stateless
 public class ProductionEJB implements ProductionEJBRemote {
 
 	@PersistenceContext(unitName="dbg3")

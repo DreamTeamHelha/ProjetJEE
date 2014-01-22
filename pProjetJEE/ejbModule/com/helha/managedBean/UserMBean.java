@@ -1,5 +1,6 @@
 package com.helha.managedBean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,11 +10,12 @@ import javax.inject.Named;
 
 import com.helha.ejb_interfaces.CategoryEJBRemote;
 import com.helha.ejb_interfaces.MemberEJBRemote;
+import com.helha.entities.Category;
 import com.helha.entities.Member;
 
 @Named
 @SessionScoped
-public class UserMBean {
+public class UserMBean implements Serializable {
 	
 	@EJB
 	private CategoryEJBRemote categoryBean;
@@ -44,6 +46,11 @@ public class UserMBean {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	
+	public List<Category>getAllCategories()
+	{
+		return categoryBean.getCategories();
 	}
 	
 	public List<Member> getSelectedMembers(){

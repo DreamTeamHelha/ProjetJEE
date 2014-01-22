@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="master.xhtml">
+
+<ui:define name="Title">Gestion des membres</ui:define>
+
+<ui:define name="Content">
+	<h:form>
+		<table>
+			<tr>
+				<td>Username : </td>
+				<td><h:inputText id="username" value="#{adminMBean.newMember.username}" required="true" requiredMessage="*"/>
+				<h:message for="username" style="color:red"/></td>
+			</tr>
+			<tr>
+				<td>Password : </td>
+				<td><h:inputText id="password" value="#{adminMBean.newMember.password}" required="true" requiredMessage="*"/>
+				<h:message for="password" style="color:red"/></td>
+			</tr>
+			<tr>
+				<td>Nom : </td>
+				<td><h:inputText id="lastname" value="#{adminMBean.newMember.name}" required="true" requiredMessage="*"/>
+				<h:message for="lastname" style="color:red"/></td>
+			</tr>
+			<tr>
+				<td>Prénom : </td>
+				<td><h:inputText id="firstname" value="#{adminMBean.newMember.firstname}" required="true" requiredMessage="*"/>
+				<h:message for="firstname" style="color:red"/></td>
+			</tr>
+			<tr>
+				<td>Section : </td>
+				<td>
+					<h:selectOneMenu id="section" value="#{adminMBean.categoryId}" required="true" requiredMessage="*">
+						<c:forEach items="#{userMBean.getAllCategories()}" var="category">
+							<f:selectItem itemLabel="${category.name}" itemValue="${category.id}"/>
+						</c:forEach>
+					</h:selectOneMenu>
+					<h:message for="section" style="color:red"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Année de réussite : </td>
+				<td><h:inputText id="year" value="#{adminMBean.newMember.finishYear}" required="true" requiredMessage="*"/>
+				<h:message for="year" style="color:red"/></td>
+			</tr>
+			<tr>
+				<td>Description : </td>
+				<td><h:inputTextarea value="#{adminMBean.newMember.personnalDescription}"/></td>
+			</tr>
+		</table>
+		<h:commandButton value="Enregistrer" action="#{adminMBean.updateMember()}"/>
+	</h:form>
+</ui:define>
+
+</ui:composition>
+
+</html>

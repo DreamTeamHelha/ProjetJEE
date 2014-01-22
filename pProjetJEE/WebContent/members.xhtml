@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="master.xhtml">
+
+<ui:define name="Title">Gestion des membres</ui:define>
+
+<ui:define name="Content">
+	<h:form>
+		<h:outputText value="Nombre d'utilisateurs : #{userMBean.getSelectedMembers().size()}"/><br/>
+		<h:commandButton value="Ajouter" action="#{adminMBean.showNewMember()}"/>
+		<h:commandButton value="Sections" action="editsections"/><hr/>
+		<c:forEach items="#{userMBean.selectedMembers}" var="member">
+			<h:outputText value="${member.firstname} ${member.name}"/><br/>
+			<h:outputText value="${member.category.name}"/><br/>
+			<h:commandButton value="Modifier" action="#{adminMBean.setNewMember(member)}"/>
+			<h:commandButton value="Supprimer" action="#{adminMBean.removeMember(member)}"/>
+			<hr/>
+		</c:forEach> 
+	</h:form>
+</ui:define>
+
+</ui:composition>
+
+</html>

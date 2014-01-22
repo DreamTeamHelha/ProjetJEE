@@ -29,7 +29,10 @@ public class Category implements Serializable{
 	 */
 	private String description;
 	
-	public Category(){}
+	public Category()
+	{
+		this("", "");
+	}
 
 	public Category(String name, String description)
 	{
